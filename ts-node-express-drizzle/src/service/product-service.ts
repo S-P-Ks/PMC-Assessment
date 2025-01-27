@@ -1,4 +1,3 @@
-import { eq, sql } from "drizzle-orm";
 import { Product } from "../api/products.js";
 import db from "../db/db.js";
 import { productTable } from "../db/schema.js";
