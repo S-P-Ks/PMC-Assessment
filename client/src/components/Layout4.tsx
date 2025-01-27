@@ -1,36 +1,41 @@
+import { Children } from "react";
 import { useGetProductsQuery } from "../store/apis/productQueries";
 import ProductDetails from "./ProductDetails";
 
 function Layout4() {
-  const { data: posts } = useGetProductsQuery({
+  const { data: posts, isFetching } = useGetProductsQuery({
     offset: 8,
     limit: 7,
   });
 
+  if(isFetching){
+    return <div>Loading...</div>
+  }
+
   return (
     <div className="w-full h-screen">
       <div className="w-full h-1/3">
-        <ProductDetails id={"1"} name={"Product 1"} type={"Technology"} />
+        <ProductDetails {...posts[0]}  />
       </div>
 
       <div className="w-full h-1/3 flex">
         <div className="w-1/2">
-          <ProductDetails id={"1"} name={"Product 1"} type={"Technology"} />
+        <ProductDetails {...posts[1]}  />
         </div>
         <div className="w-1/2">
-          <ProductDetails id={"1"} name={"Product 1"} type={"Technology"} />
+          <ProductDetails {...posts[2]}  />
         </div>
       </div>
 
       <div className="w-full h-1/3 flex">
         <div className="w-1/3">
-          <ProductDetails id={"1"} name={"Product 1"} type={"Technology"} />
+          <ProductDetails {...posts[3]}  />
         </div>
         <div className="w-1/3">
-          <ProductDetails id={"1"} name={"Product 1"} type={"Technology"} />
+          <ProductDetails {...posts[4]}  />
         </div>
         <div className="w-1/3">
-          <ProductDetails id={"1"} name={"Product 1"} type={"Technology"} />
+          <ProductDetails {...posts[5]}  />
         </div>
       </div>
     </div>
